@@ -6,7 +6,7 @@ from flask_cors import CORS
 import anthropic
 import os
 import json
-import pandas as pd
+Import css
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -31,27 +31,33 @@ def load_resume_data():
     print("Loading resume data...")
     
     try:
-        # Read each CSV file using pandas
-        work_exp = pd.read_csv('data/work_experience.csv')
-        achievements = pd.read_csv('data/achievements.csv')
-        skills = pd.read_csv('data/skills_matrix.csv')
-        projects = pd.read_csv('data/projects.csv')
-        community = pd.read_csv('data/community_involvement.csv')
-        education = pd.read_csv('data/education.csv')
+        def read_csv_to_dict(filepath):
+            """Helper function to read CSV and convert to list of dicts"""
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                return list(reader)
+        
+        # Read each CSV file
+        work_exp = read_csv_to_dict('data/work_experience.csv')
+        achievements = read_csv_to_dict('data/achievements.csv')
+        skills = read_csv_to_dict('data/skills_matrix.csv')
+        projects = read_csv_to_dict('data/projects.csv')
+        community = read_csv_to_dict('data/community_involvement.csv')
+        education = read_csv_to_dict('data/education.csv')
         
         # Read the JSON metadata file
         with open('data/context_metadata.json', 'r') as f:
             metadata = json.load(f)
         
-        # Convert DataFrames to dictionaries
+        # Combine into resume context
         resume_context = {
             "candidate_info": metadata,
-            "work_experience": work_exp.to_dict('records'),
-            "achievements": achievements.to_dict('records'),
-            "skills": skills.to_dict('records'),
-            "projects": projects.to_dict('records'),
-            "community_involvement": community.to_dict('records'),
-            "education": education.to_dict('records')
+            "work_experience": work_exp,
+            "achievements": achievements,
+            "skills": skills,
+            "projects": projects,
+            "community_involvement": community,
+            "education": education
         }
         
         print(f"✓ Loaded {len(work_exp)} work experiences")
