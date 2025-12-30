@@ -1,0 +1,23 @@
+skill_id,skill_name,skill_category,proficiency,years_experience,first_used,last_used,is_primary,sub_skills
+SK001,Tableau,Visualization,Expert,6.0,2019-01-01,2024-12-30,True,"Server, Cloud, Agent, Pulse, Administration, Migrations, Governance"
+SK002,Tableau Server,Visualization,Expert,6.0,2019-01-01,2024-12-30,True,
+SK003,Tableau Cloud,Visualization,Expert,2.5,2022-04-01,2024-12-30,True,
+SK004,Tableau Agent,Visualization,Advanced,0.5,2024-08-01,2024-12-30,True,
+SK005,Tableau Pulse,Visualization,Advanced,0.5,2024-08-01,2024-12-30,True,
+SK006,Python,Programming,Advanced,3.0,2021-01-01,2024-12-30,True,"XML Parsing, Automation, Data Processing, API Integration"
+SK007,SQL,Programming,Expert,8.0,2017-01-01,2024-12-30,True,"Query Optimization, Complex Joins, Window Functions, Performance Tuning"
+SK008,Snowflake,Cloud Data Platform,Advanced,3.0,2022-01-01,2024-12-30,True,"Cost Optimization, Warehouse Tuning, Query Performance, Data Lineage"
+SK009,Data Pipeline Engineering,Data Engineering,Advanced,5.0,2019-01-01,2024-12-30,True,"ETL, Data Integration, Automation"
+SK010,Data Lineage,Data Engineering,Advanced,1.0,2024-01-01,2024-12-30,True,"Dependency Tracking, Monitoring"
+SK011,ETL Development,Data Engineering,Advanced,5.0,2019-01-01,2024-12-30,True,
+SK012,Data Modeling,Data Engineering,Advanced,5.0,2019-01-01,2024-12-30,True,
+SK013,Data Governance,Governance,Expert,4.0,2021-01-01,2024-12-30,True,"Security Architecture, Permissions Management, Compliance"
+SK014,Tableau Administration,Governance,Expert,5.0,2019-01-01,2024-12-30,True,
+SK015,Agentic Analytics,Analytics,Advanced,0.5,2024-08-01,2024-12-30,True,
+SK016,Business Intelligence,Analytics,Expert,8.0,2017-01-01,2024-12-30,True,
+SK017,ServiceNow Integration,Integration,Intermediate,0.5,2024-08-01,2024-12-30,False,
+SK018,API Integration,Integration,Advanced,4.0,2021-01-01,2024-12-30,True,
+SK019,Automation,DevOps,Advanced,3.0,2021-01-01,2024-12-30,True,"Python Scripting, Process Automation, Workflow Design"
+SK020,Client Management,Leadership,Advanced,2.5,2022-04-01,2024-08-01,True,
+SK021,Change Management,Leadership,Advanced,2.0,2022-01-01,2024-12-30,True,
+SK022,Training & Enablement,Leadership,Advanced,3.0,2021-01-01,2024-12-30,True,

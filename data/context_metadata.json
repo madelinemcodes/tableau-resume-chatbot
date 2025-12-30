@@ -1,0 +1,40 @@
+{
+  "candidate_name": "Madeline Cook",
+  "email": "cook.madelinemarie@gmail.com",
+  "linkedin": "www.linkedin.com/in/madelinemariecook",
+  "current_title": "Business Intelligence Developer",
+  "current_company": "Enact Mortgage Insurance (Contract via TEKSystems)",
+  "total_years_experience": 8,
+  "years_in_bi": 6,
+  "years_in_tableau": 6,
+  "primary_expertise": [
+    "Tableau",
+    "Snowflake",
+    "Python",
+    "SQL",
+    "Data Governance",
+    "BI Development"
+  ],
+  "industries_served": [
+    "Financial Services",
+    "Consulting",
+    "Manufacturing",
+    "Healthcare",
+    "Retail",
+    "Logistics"
+  ],
+  "unique_value_propositions": [
+    "Proven cost optimizer - saved $314K+ through automation and monitoring",
+    "Tableau migration specialist - 100+ successful client migrations",
+    "Emerging leader in agentic analytics and AI-driven insights",
+    "Community leader - Raleigh/Durham TUG, TC25 speaker"
+  ],
+  "location": "Raleigh, North Carolina",
+  "education_summary": "B.S. Business Data Analytics, Arizona State University",
+  "languages": [
+    "English",
+    "Spanish (Minor)"
+  ],
+  "career_trajectory": "Individual Contributor \u2192 Senior IC \u2192 Architect \u2192 Consultant \u2192 Current BI Developer role",
+  "resume_last_updated": "2024-11-30"
+}

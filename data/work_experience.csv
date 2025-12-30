@@ -1,0 +1,5 @@
+experience_id,company,employment_type,title,start_date,end_date,is_current,duration_months,industry,company_size,role_category,seniority_level
+EXP001,Enact Mortgage Insurance,Contract via TEKSystems,Business Intelligence Developer,2024-08-01,,True,5,Financial Services,Enterprise,Business Intelligence,Mid-Senior
+EXP002,InterWorks,Full-time,Analytics Consultant,2022-04-01,2024-08-01,False,28,Consulting,Mid-size,Analytics Consulting,Mid-level
+EXP003,Fender Musical Instruments Corporation,Full-time,Data Architect,2021-03-01,2022-03-01,False,12,Manufacturing/Retail,Enterprise,Data Architecture,Senior
+EXP004,Fender Musical Instruments Corporation,Full-time,Senior Business Intelligence Analyst,2019-01-01,2021-03-01,False,26,Manufacturing/Retail,Enterprise,Business Intelligence,Senior

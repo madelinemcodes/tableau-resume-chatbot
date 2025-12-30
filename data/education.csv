@@ -1,0 +1,2 @@
+education_id,institution,degree_type,major,minor,graduation_date,is_completed,location
+EDU001,Arizona State University,Bachelor of Science,Business Data Analytics,Spanish,2018-12-01,True,"Arizona, USA"

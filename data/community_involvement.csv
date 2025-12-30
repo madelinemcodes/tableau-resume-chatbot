@@ -1,0 +1,4 @@
+involvement_id,organization,role,start_date,end_date,is_current,involvement_type,description,skills_demonstrated
+COM001,Raleigh/Durham Tableau User Group,Leader,2024-11-01,,True,Community Leadership,Lead community of Tableau practitioners in the Research Triangle area,"['Community Building', 'Public Speaking', 'Event Planning', 'Tableau']"
+COM002,Tableau Conference 2025,Speaker,2025-04-01,2025-04-01,False,Conference Speaking,Speaking at Tableau Conference 2025,"['Public Speaking', 'Thought Leadership', 'Tableau Expertise']"
+COM003,InterWorks,Technical Author & Webinar Presenter,2022-04-01,2024-08-01,False,Content Creation,Technical author and webinar presenter on Tableau governance and migrations,"['Technical Writing', 'Public Speaking', 'Thought Leadership']"

@@ -1,0 +1,7 @@
+project_id,experience_id,project_name,project_type,start_date,end_date,primary_skills,impact,description
+PRJ001,EXP001,Snowflake Cost Optimization Initiative,Cost Management,2024-08-01,2024-10-01,"['Snowflake', 'Tableau', 'Data Analysis']",$22K monthly savings ($264K annualized),Built monitoring dashboard to identify and eliminate compute waste
+PRJ002,EXP001,Tableau Workbook Automation Tool,Automation,2024-09-01,2024-11-01,"['Python', 'XML', 'Tableau API']",100+ hours saved per migration,Python-based XML parser for automated data source replacements
+PRJ003,EXP001,Enterprise Data Lineage System,Data Governance,2024-08-01,2024-12-30,"['Data Lineage', 'Snowflake', 'Tableau', 'Pipeline Engineering']","Real-time monitoring of 2,000+ daily jobs",End-to-end lineage tracking across data ecosystem
+PRJ004,EXP001,Agentic Analytics Platform,Innovation,2024-10-01,,"['Tableau Agent', 'Tableau Pulse', 'AI/ML']",Positioned org for AI-driven insights,Research and deployment of Tableau Agent and Pulse
+PRJ005,EXP002,Tableau Migration Framework,Migration,2022-04-01,2024-08-01,"['Tableau Server', 'Tableau Cloud', 'Metadata Analysis']",100+ successful client migrations,End-to-end migration solution from Server to Cloud
+PRJ006,EXP004,Spend Analysis Pipeline,Data Engineering,2019-06-01,2020-03-01,"['ETL', 'Data Modeling', 'Python']",$50K annual savings,In-house pipeline eliminating vendor dependency

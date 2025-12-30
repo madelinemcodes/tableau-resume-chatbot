@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask About Madeline's Qualifications</title>
+    
+    <!-- 
+    ===========================================
+    CSS STYLES - HOW THINGS LOOK
+    ===========================================
+    This <style> section controls all visual appearance:
+    - Colors, fonts, sizes
+    - Layout and positioning
+    - Animations and transitions
+    -->
+    <style>
+        /* RESET - Remove default browser styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* BODY - The entire page background */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;  /* vh = viewport height, 100vh = full screen */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* CHAT CONTAINER - The white box that holds everything */
+        #chat-container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;  /* Stack items vertically */
+            height: 90vh;
+            max-height: 800px;
+        }
+        
+        /* HEADER - Title and subtitle */
+        h2 {
+            color: #1e3a8a;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        /* SUGGESTIONS SECTION - The quick question buttons */
+        #suggestions {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        #suggestions p {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #374151;
+            font-size: 14px;
+        }
+        
+        /* Individual suggestion button */
+        .suggestion {
+            background: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 6px;
+            cursor: pointer;  /* Changes cursor to hand pointer */
+            font-size: 14px;
+            border: 2px solid transparent;
+            transition: all 0.2s;  /* Smooth animation on hover */
+        }
+        
+        /* What happens when you hover over a suggestion */
+        .suggestion:hover {
+            border-color: #667eea;
+            transform: translateX(5px);  /* Slides right slightly */
+        }
+        
+        /* MESSAGES AREA - Where chat messages appear */
+        #messages {
+            flex: 1;  /* Takes up all available space */
+            overflow-y: auto;  /* Scrollable if messages overflow */
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+        
+        /* Individual message bubble */
+        .message {
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            max-width: 85%;
+            line-height: 1.5;
+            animation: fadeIn 0.3s;  /* Fade in animation */
+        }
+        
+        /* Fade in animation definition */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        /* Recruiter's messages - Blue, right-aligned */
+        .recruiter {
+            background: #dbeafe;
+            margin-left: auto;  /* Pushes to right side */
+            text-align: right;
+            color: #1e40af;
+        }
+        
+        /* Claude's messages - Gray, left-aligned */
+        .claude {
+            background: white;
+            border: 1px solid #e5e7eb;
+            color: #374151;
+            white-space: pre-wrap;  /* Preserves line breaks */
+        }
+        
+        /* TYPING INDICATOR - The "..." when Claude is thinking */
+        .typing-indicator {
+            display: none;  /* Hidden by default */
+            padding: 12px 16px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            max-width: 85%;
+        }
+        
+        /* When active, show the typing indicator */
+        .typing-indicator.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        /* The three dots that bounce */
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #9ca3af;
+            margin: 0 2px;
+            animation: bounce 1.4s infinite;
+        }
+        
+        /* Stagger the bounce animation for each dot */
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        /* Bounce animation definition */
+        @keyframes bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        
+        /* INPUT AREA - Text box and send button at bottom */
+        #input-area {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Text input box */
+        #question-input {
+            flex: 1;  /* Takes up remaining space */
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        
+        /* When user clicks in the input box */
+        #question-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        /* Send button */
+        #send-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        /* When hovering over send button (but not disabled) */
+        #send-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* When button is disabled (while loading) */
+        #send-btn:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        /* Error messages */
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        
+        /* SCROLLBAR STYLING - Make it prettier */
+        #messages::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        #messages::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        
+        #messages::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    ===========================================
+    HTML STRUCTURE - WHAT ELEMENTS EXIST
+    ===========================================
+    This section defines all the elements users see and interact with
+    -->
+    
+    <div id="chat-container">
+        <!-- HEADER -->
+        <h2>💬 Ask About Madeline's Qualifications</h2>
+        <p class="subtitle">Powered by Claude AI • Ask any question about experience, skills, or fit</p>
+        
+        <!-- QUICK SUGGESTIONS -->
+        <div id="suggestions">
+            <p>💡 Try asking:</p>
+            <!-- Each div with onclick will trigger askQuestion() when clicked -->
+            <div class="suggestion" onclick="askQuestion('How experienced is Madeline with Tableau?')">
+                How experienced is Madeline with Tableau?
+            </div>
+            <div class="suggestion" onclick="askQuestion('What cost savings has she delivered?')">
+                What cost savings has she delivered?
+            </div>
+            <div class="suggestion" onclick="askQuestion('Can she work with Python and automation?')">
+                Can she work with Python and automation?
+            </div>
+            <div class="suggestion" onclick="askQuestion('Is she qualified for a Senior BI Developer role?')">
+                Is she qualified for a Senior BI Developer role?
+            </div>
+        </div>
+        
+        <!-- MESSAGES CONTAINER - Where chat history appears -->
+        <div id="messages"></div>
+        
+        <!-- TYPING INDICATOR - Shows when Claude is responding -->
+        <div class="typing-indicator" id="typing-indicator">
+            <span></span><span></span><span></span>
+        </div>
+        
+        <!-- INPUT AREA - Where users type questions -->
+        <div id="input-area">
+            <input 
+                type="text" 
+                id="question-input" 
+                placeholder="Ask about skills, experience, projects, or qualifications..."
+                onkeypress="handleKeyPress(event)"
+            />
+            <button id="send-btn" onclick="sendQuestion()">Ask</button>
+        </div>
+    </div>
+
+    <!-- 
+    ===========================================
+    JAVASCRIPT - WHAT HAPPENS WHEN USERS INTERACT
+    ===========================================
+    This section handles all the logic and communication with backend
+    -->
+    <script>
+        // ===== CONFIGURATION =====
+        // This is where your Flask backend is running
+        // When you deploy, you'll change this to your production URL
+        const API_URL = 'http://localhost:5000/api/chat';
+        
+        // ===== HELPER FUNCTIONS =====
+        
+        /**
+         * Add a message to the chat window
+         * @param {string} text - The message text to display
+         * @param {string} sender - Either 'recruiter' or 'claude'
+         */
+        function addMessage(text, sender) {
+            const messagesDiv = document.getElementById('messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = text;
+            messagesDiv.appendChild(messageDiv);
+            
+            // Auto-scroll to bottom to show newest message
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        /**
+         * Show the typing indicator (three bouncing dots)
+         */
+        function showTypingIndicator() {
+            document.getElementById('typing-indicator').classList.add('active');
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        /**
+         * Hide the typing indicator
+         */
+        function hideTypingIndicator() {
+            document.getElementById('typing-indicator').classList.remove('active');
+        }
+        
+        // ===== MAIN FUNCTION - SEND QUESTION TO BACKEND =====
+        
+        /**
+         * This is the heart of the application
+         * It takes the user's question and sends it to your Flask backend
+         */
+        async function sendQuestion() {
+            // Get the input box
+            const input = document.getElementById('question-input');
+            const question = input.value.trim();
+            
+            // Don't send if question is empty
+            if (!question) return;
+            
+            // Get the send button so we can disable it
+            const btn = document.getElementById('send-btn');
+            btn.disabled = true;
+            btn.textContent = 'Thinking...';
+            
+            // Add the question to chat window
+            addMessage(question, 'recruiter');
+            
+            // Clear the input box
+            input.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            try {
+                // ===== THE ACTUAL API CALL =====
+                // This sends an HTTP POST request to your Flask backend
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question: question })
+                });
+                
+                // Parse the JSON response
+                const data = await response.json();
+                
+                // Hide typing indicator
+                hideTypingIndicator();
+                
+                // Check if request was successful
+                if (response.ok) {
+                    // Success! Show Claude's answer
+                    addMessage(data.answer, 'claude');
+                    
+                    // Log token usage to console (for debugging)
+                    console.log('Token usage:', data.usage);
+                } else {
+                    // Error from backend
+                    addMessage(`Error: ${data.error || 'Something went wrong'}`, 'error');
+                }
+            } catch (error) {
+                // Network error (can't reach backend)
+                hideTypingIndicator();
+                addMessage('Sorry, I encountered a network error. Please try again.', 'error');
+                console.error('Error:', error);
+            } finally {
+                // Re-enable the button
+                btn.disabled = false;
+                btn.textContent = 'Ask';
+            }
+        }
+        
+        // ===== CONVENIENCE FUNCTIONS =====
+        
+        /**
+         * Called when user clicks a suggestion button
+         * @param {string} text - The suggested question
+         */
+        function askQuestion(text) {
+            document.getElementById('question-input').value = text;
+            sendQuestion();
+        }
+        
+        /**
+         * Called when user presses a key in the input box
+         * If they press Enter, send the question
+         * @param {KeyboardEvent} event - The keyboard event
+         */
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendQuestion();
+            }
+        }
+        
+        // ===== INITIALIZATION =====
+        // Add welcome message when page loads
+        window.addEventListener('load', () => {
+            addMessage("Hi! I'm an AI assistant trained on Madeline's resume. Ask me anything about her experience, skills, projects, or qualifications for your role.", 'claude');
+        });
+    </script>
+</body>
+</html>
