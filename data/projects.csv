@@ -5,3 +5,4 @@ PRJ003,EXP001,Enterprise Data Lineage System,Data Governance,2024-08-01,2024-12-
 PRJ004,EXP001,Agentic Analytics Platform,Innovation,2024-10-01,,"['Tableau Agent', 'Tableau Pulse', 'AI/ML']",Positioned org for AI-driven insights,Research and deployment of Tableau Agent and Pulse
 PRJ005,EXP002,Tableau Migration Framework,Migration,2022-04-01,2024-08-01,"['Tableau Server', 'Tableau Cloud', 'Metadata Analysis']",100+ successful client migrations,End-to-end migration solution from Server to Cloud
 PRJ006,EXP004,Spend Analysis Pipeline,Data Engineering,2019-06-01,2020-03-01,"['ETL', 'Data Modeling', 'Python']",$50K annual savings,In-house pipeline eliminating vendor dependency
+PRJ007,,Artificial Intelligence Resume Chatbot,Personal Project,2024-12-31,2024-12-31,"['ETL', 'Data Modeling', 'Python']",Recruiter ease of querying my resume,Built a chatbot using Claude and Render to enable recruiters to ask questions about my resume
